@@ -7,12 +7,14 @@ resource "k8s_core_v1_namespace" "this" {
 module "springboot" {
   source = "git::https://github.com/mingfang/terraform-k8s-modules.git//archetypes/deployment-service"
   parameters = {
-    name                 = var.name
-    namespace            = k8s_core_v1_namespace.this.metadata[0].name
-    annotations          = var.annotations
-    replicas             = var.replicas
-    ports                = var.ports
-    enable_service_links = false
+    name        = var.name
+    namespace   = k8s_core_v1_namespace.this.metadata[0].name
+    annotations = var.annotations
+    replicas    = var.replicas
+    ports       = var.ports
+
+    enable_service_links             = false
+    termination_grace_period_seconds = 1
 
     containers = [
       {
