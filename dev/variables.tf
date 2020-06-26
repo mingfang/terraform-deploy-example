@@ -1,0 +1,1 @@
+variable "springboot-docker-image" {}
