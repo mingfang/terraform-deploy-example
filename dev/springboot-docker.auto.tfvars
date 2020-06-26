@@ -1,1 +1,1 @@
-springboot-docker-image = "springboot-docker:master-496e25-25"
+springboot-docker-image = "springboot-docker:master-496e25-26"
