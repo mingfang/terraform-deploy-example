@@ -1,7 +1,13 @@
+resource "k8s_core_v1_namespace" "this" {
+  metadata {
+    name = var.namespace
+  }
+}
+
 locals {
   parameters = {
     name                 = var.name
-    namespace            = var.namespace
+    namespace            = k8s_core_v1_namespace.this.metadata[0].name
     annotations          = var.annotations
     replicas             = var.replicas
     ports                = var.ports
